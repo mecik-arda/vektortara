@@ -1,0 +1,21 @@
+veritabanlari:
+  - ad: chromadb
+    kayitlar:
+      - id: CVE-2026-45829
+        ad: ChromaToast
+        cvss: "10.0"
+        cwe: CWE-94
+        etkilenen: ">=1.0.0"
+        ozet: >-
+          Kimlik doğrulaması öncesi kod enjeksiyonu. Saldırgan,
+          /api/v2/tenants/{tenant}/databases/{db}/collections uç noktasına
+          trust_remote_code=true ile kötü niyetli bir model deposu göndererek
+          sunucu üzerinde rastgele Python kodu çalıştırabiliyor.
+        oneri: >-
+          Sunucuyu kimlik doğrulama katmanı arkasına alın ve dış ağa açmayın.
+          Embedding işlevi yapılandırmasının kullanıcıdan alınmadığından emin
+          olun. Resmî yama ve geçici çözümleri kaynaktan takip edin.
+        kaynaklar:
+          - https://www.hiddenlayer.com/research/chromatoast-served-pre-auth
+          - https://nvd.nist.gov/vuln/detail/CVE-2026-45829
+          - https://github.com/chroma-core/chroma/issues/6717
