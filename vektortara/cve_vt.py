@@ -68,7 +68,7 @@ def _kayit_dogrula(kayit: object) -> CveKaydi:
     for alan in ("id", "ad", "cwe", "etkilenen", "ozet", "oneri"):
         if not isinstance(kayit[alan], str):
             raise CveKayitHatasi(f"CVE kaydında '{alan}' alanı metin olmalı: {kayit.get('id', '?')}")
-    if isinstance(kayit["cvss"], bool) or not isinstance(kayit["cvss"], (str, int, float)):
+    if isinstance(kayit["cvss"], bool) or not isinstance(kayit["cvss"], str | int | float):
         raise CveKayitHatasi(f"CVE kaydında 'cvss' alanı hatalı: {kayit.get('id', '?')}")
     if not isinstance(kayit["kaynaklar"], list) or not all(
         _gecerli_kaynak_urlsi(k) for k in kayit["kaynaklar"]
